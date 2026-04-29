@@ -4,7 +4,7 @@ Level 1 is a local, single-page Pomodoro app for getting started when studying f
 
 ## Run
 
-Open `[index.html](https://angelawurx.github.io/FinalFocus/)` in a browser.
+Open [Final Focus](https://angelawurx.github.io/FinalFocus/) in a browser.
 
 ## Level 1 features
 
