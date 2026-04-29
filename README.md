@@ -1,31 +1,30 @@
-# FinalFocus
+# Final Focus Pomodoro
 
-FinalFocus is an iPhone-first Pomodoro app for undergrad finals prep. It is designed around quick activation, hard-to-abandon focus blocks, study reminders, and reward coins that are earned only after completed work.
-
-## What is included
-
-- SwiftUI iOS app with Focus, Plan, and Rewards tabs
-- Date-based timer that keeps working against the device clock
-- 90-second activation ritual before deep work
-- Friction sheet before abandoning a focus block
-- Local notifications for prep, focus, and break completion
-- Apple Reminders integration through EventKit
-- Reward coin shop after completed blocks
-- Backend planning endpoint scaffold in `Backend/server.py`
+Level 1 is a local, single-page Pomodoro app for getting started when studying feels hard to begin.
 
 ## Run
 
-Open `FinalFocus.xcodeproj` in Xcode, select an iPhone simulator, and run the `FinalFocus` scheme.
+Open `index.html` in a browser.
 
-To test the backend planner locally:
+## Level 1 features
 
-```bash
-cd Backend
-python3 server.py
-```
+- Fast activation: type one tiny finals target, then press `Start focus` or the space bar.
+- Computer-clock based countdown: sessions persist from a real end timestamp, so reloads keep the same clock target.
+- Fullscreen focus mode: after starting, the dashboard disappears, scrolling is blocked, and the countdown dominates the page.
+- Hard to inactivate: stopping a running session requires holding `Hold to quit` for 12 seconds, then writing a reason.
+- Reward loop: each completed focus block adds coins and unlocks a prize from the prize shelf.
+- Finals defaults: 25-minute focus, 5-minute break, adjustable in the session panel.
+- Optional browser notification at the bell.
+- Today panel: shows the current date and a manually editable day schedule.
+- Daily fun fact: rotates a study-related fact based on the date.
+- Planning agent: add one messy task, get small startable steps, and send a step into the Pomodoro target.
+- Career learning plan: type a goal such as `coding interview`, attach a curated resource, and add milestones into the planning agent.
 
-The app currently points at `http://127.0.0.1:8787/plan`. On a physical iPhone, change that to your Mac's LAN IP or deploy the backend.
+## Level 2 candidates
 
-## App Store notes
-
-Before App Store submission, set your Apple Developer Team, update the bundle identifier, add real app icons, add a privacy policy, and decide whether reminders are core functionality or optional.
+- Read a study schedule from the Obsidian `business_tacoon` project.
+- Create Apple Reminders for planned focus blocks.
+- Add a local Calendar helper so the Today panel can import real calendar events after explicit permission.
+- Add live GitHub search for career resources instead of the current curated matcher.
+- Add exam-specific task queues and prize prices to the planning agent.
+- Add a lock screen / fullscreen mode for active sessions.

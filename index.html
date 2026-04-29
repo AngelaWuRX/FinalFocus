@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Final Focus Pomodoro</title>
+    <link rel="stylesheet" href="styles.css?v=12" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="timer-panel" aria-label="Pomodoro timer">
+        <div class="topline">
+          <span class="level">Level 1</span>
+          <span id="clock" class="clock">--:--</span>
+        </div>
+
+        <section class="today-card" aria-label="Today schedule">
+          <div class="today-head">
+            <div>
+              <span>Today</span>
+              <strong id="todayDate">--</strong>
+            </div>
+            <button id="scheduleAdd" type="button">Add</button>
+          </div>
+          <div class="schedule-capture">
+            <input
+              id="scheduleInput"
+              maxlength="80"
+              autocomplete="off"
+              placeholder="9:30 lecture, 2:00 review, 6:00 gym"
+            />
+          </div>
+          <div id="scheduleList" class="schedule-list" aria-live="polite"></div>
+        </section>
+
+        <div class="intent-row">
+          <label for="focusIntent">Finals target</label>
+          <input
+            id="focusIntent"
+            maxlength="70"
+            autocomplete="off"
+            placeholder="Type the smallest thing you can start now"
+          />
+        </div>
+
+        <div class="timer-core">
+          <div class="ring" aria-hidden="true">
+            <svg viewBox="0 0 240 240">
+              <circle class="track" cx="120" cy="120" r="104"></circle>
+              <circle id="progressRing" class="progress" cx="120" cy="120" r="104"></circle>
+            </svg>
+            <div class="time-stack">
+              <span id="modeLabel">Ready</span>
+              <strong id="timeLeft">25:00</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button id="startButton" class="primary-button" type="button">
+            Start focus
+          </button>
+          <button id="quitButton" class="hold-button" type="button" aria-describedby="quitHint">
+            Hold to quit
+            <span id="holdFill"></span>
+          </button>
+          <p id="quitHint">Stopping takes a 12-second hold and a reason.</p>
+        </div>
+
+        <div id="quitReason" class="quit-reason" hidden>
+          <label for="reasonInput">Reason for stopping</label>
+          <div>
+            <input id="reasonInput" maxlength="80" placeholder="What got in the way?" />
+            <button id="confirmQuit" type="button">Confirm</button>
+          </div>
+        </div>
+
+        <section class="fun-fact" aria-label="Daily fun fact">
+          <span>Fun fact</span>
+          <p id="dailyFact">--</p>
+        </section>
+      </section>
+
+      <aside class="side-panel" aria-label="Progress and rewards">
+        <section class="planner-agent" aria-label="Planning agent">
+          <div class="agent-head">
+            <div>
+              <span>Planning agent</span>
+              <h1>Next tiny step</h1>
+            </div>
+            <button id="agentToggle" class="icon-button" type="button" aria-expanded="true">
+              Min
+            </button>
+          </div>
+          <div id="agentBody" class="agent-body">
+            <label for="taskInput">Task or worry</label>
+            <div class="agent-capture">
+              <input
+                id="taskInput"
+                maxlength="90"
+                autocomplete="off"
+                placeholder="Example: study for stats final"
+              />
+              <button id="planTask" type="button">Plan</button>
+            </div>
+            <p id="agentSuggestion">Add one messy task and I will make it startable.</p>
+            <div id="taskList" class="task-list" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section class="stats-strip">
+          <div>
+            <span>Streak</span>
+            <strong id="streakCount">0</strong>
+          </div>
+          <div>
+            <span>Coins</span>
+            <strong id="coinCount">0</strong>
+          </div>
+          <div>
+            <span>Blocks</span>
+            <strong id="blockCount">0</strong>
+          </div>
+        </section>
+
+        <section class="reward-box">
+          <h1>Prize shelf</h1>
+          <p id="rewardText">Complete one focus block to unlock your first prize.</p>
+          <button id="claimReward" type="button" disabled>Claim prize</button>
+        </section>
+
+        <section class="protocol-box">
+          <h2>Level 1 protocol</h2>
+          <ol>
+            <li>Write one tiny finals target.</li>
+            <li>Press start and work for 25 minutes.</li>
+            <li>Take a 5-minute break after the bell.</li>
+            <li>Spend your prize only after the block is complete.</li>
+          </ol>
+        </section>
+
+        <section class="settings-box">
+          <h2>Session</h2>
+          <div class="setting-grid">
+            <label>
+              Focus
+              <input id="focusMinutes" type="number" min="5" max="60" step="5" value="25" />
+            </label>
+            <label>
+              Break
+              <input id="breakMinutes" type="number" min="1" max="20" step="1" value="5" />
+            </label>
+          </div>
+          <label class="notify-toggle">
+            <input id="notifyToggle" type="checkbox" />
+            Computer notification at the bell
+          </label>
+        </section>
+
+        <section class="career-plan" aria-label="Career learning plan">
+          <div class="career-head">
+            <div>
+              <span>Career plan</span>
+              <h2>Long game</h2>
+            </div>
+            <button id="careerBuild" type="button">Build</button>
+          </div>
+          <label for="careerGoal">Goal</label>
+          <input
+            id="careerGoal"
+            maxlength="70"
+            autocomplete="off"
+            placeholder="Example: coding interview"
+          />
+          <div id="careerResult" class="career-result"></div>
+        </section>
+      </aside>
+    </main>
+
+    <dialog id="completionDialog">
+      <form method="dialog">
+        <span class="dialog-kicker">Block complete</span>
+        <h2 id="completionTitle">Prize earned</h2>
+        <p id="completionCopy"></p>
+        <button type="submit">Start break</button>
+      </form>
+    </dialog>
+
+    <script src="app.js?v=12"></script>
+  </body>
+</html>
