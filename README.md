@@ -1,12 +1,12 @@
 # Final Focus Pomodoro
 
-Level 1 is a local, single-page Pomodoro app for getting started when studying feels hard to begin.
+A local, single-page Pomodoro app for getting started when studying feels hard to begin. This is created at the end of Spring 2026 Final week midnight.
 
 ## Run
 
 Open [Final Focus](https://angelawurx.github.io/FinalFocus/) in a browser.
 
-## Level 1 features
+## Features
 
 - Fast activation: type one tiny finals target, then press `Start focus` or the space bar.
 - Computer-clock based countdown: sessions persist from a real end timestamp, so reloads keep the same clock target.
@@ -19,12 +19,3 @@ Open [Final Focus](https://angelawurx.github.io/FinalFocus/) in a browser.
 - Daily fun fact: rotates a study-related fact based on the date.
 - Planning agent: add one messy task, get small startable steps, and send a step into the Pomodoro target.
 - Career learning plan: type a goal such as `coding interview`, attach a curated resource, and add milestones into the planning agent.
-
-## Level 2 candidates
-
-- Read a study schedule from the Obsidian `business_tacoon` project.
-- Create Apple Reminders for planned focus blocks.
-- Add a local Calendar helper so the Today panel can import real calendar events after explicit permission.
-- Add live GitHub search for career resources instead of the current curated matcher.
-- Add exam-specific task queues and prize prices to the planning agent.
-- Add a lock screen / fullscreen mode for active sessions.
